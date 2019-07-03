@@ -50,5 +50,10 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  catchTianqi() {
+    wx.navigateTo({
+      url: '/pages/tianqi/tianqi'
+    })
   }
 })

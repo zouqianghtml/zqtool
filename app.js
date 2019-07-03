@@ -1,5 +1,9 @@
 //app.js
 App({
+  globalData: {
+    userInfo: null,
+    locationInfo: null
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -32,8 +36,26 @@ App({
         }
       }
     })
+    this.getLocation();
   },
-  globalData: {
-    userInfo: null
+  // 获取用户当前位置
+  getLocation() {
+    wx.getLocation({
+      type: 'wgs84',
+      success (res) {
+        console.log(res)
+        const latitude = res.latitude
+        const longitude = res.longitude
+        wx.openLocation({
+          latitude,
+          longitude,
+          scale: 18,
+          success(res) {
+            console.log(res)
+          }
+        })
+      }
+     })
+     
   }
 })
