@@ -42,6 +42,7 @@ App({
   getLocation() {
     wx.getLocation({
       type: 'wgs84',
+      altitude: true,
       success (res) {
         console.log(res)
         const latitude = res.latitude
